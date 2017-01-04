@@ -5,8 +5,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,18 +20,17 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 /**
- * Created by Administrator on 2017/1/4.
+ * Created by Administrator on 2017/1/5.
  */
 
-public class g501 extends Fragment {
+public class f5_2 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return new AnimView(getActivity());
+        return new f5_2.AnimView(getActivity());
 
     }
 
@@ -40,35 +40,35 @@ public class g501 extends Fragment {
     private Bitmap map,player,back;
     private SurfaceHolder sfh;
     private int[][] test_map0 = {
-            { 0, 1, 1, 323, 324, 325, 326, 1, 1, 1, 0 },
-            { 0, 9, 9, 331, 332, 333, 334, 9, 9, 9, 0 },
-            { 0, 330, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
-            { 0, 37, 121, 37, 121, 37, 121, 37, 121, 37, 0},
-            { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0},
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 341, 342, 343, 1, 1, 1, 341, 342, 343, 0 },
+            { 0, 349, 350, 351, 9, 9, 9, 349, 350, 351, 0 },
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 121, 37, 122, 37, 121, 37, 121, 37, 0 },
-            { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0  },
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
-            { 0, 392, 37, 37, 37, 37, 37, 37, 37, 37, 0},
-            { 0, 400, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 37, 37, 37, 37, 37, 37, 149, 150, 0},
+            { 0, 37, 37, 37, 37, 37, 37, 37, 157, 158, 0},
+            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
+            { 0, 147, 148, 37, 37, 37, 37, 37, 37, 37, 0 },
+            { 0, 155, 156, 37, 37, 37, 37, 37, 37, 37, 0 },
+            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 37, 37, 321, 322, 37, 37, 37, 37, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
     private int[][] test_map1 = {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
     private int[][] test_back0 = {
@@ -98,12 +98,11 @@ public class g501 extends Fragment {
 
 
 
-
     private int tx=0;
     private int ty=0;
 
 
-    private int px=12;
+    private int px=2;
     private int py=2;
 
 
@@ -119,40 +118,39 @@ public class g501 extends Fragment {
         doBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (test_map1[12][2]==9 || test_map1[11][2]==9) {
+                if (test_map1[2][2]==25) {
+                    getActivity().getFragmentManager().popBackStack();
                     FragmentManager fm;
                     fm = getActivity().getSupportFragmentManager();
-                    f5_2 f = new f5_2();
+                    g501 f = new g501();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
                     MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
                     m.start();
                 }
-                if (test_map1[10][4]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("伯特，記住絕對不要回頭").show();
+                if (test_map1[2][8]==25) {
+                    getActivity().getFragmentManager().popBackStack();
+                    FragmentManager fm;
+                    fm = getActivity().getSupportFragmentManager();
+                    g502 f = new g502();
+                    fm.beginTransaction().replace(R.id.mainfame,f).commit();
+                    MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
+                    m.start();
                 }
-                if (test_map1[6][4]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                if (test_map1[8][3]==9 || test_map1[9][3]==9 ) {
+                    getActivity().getFragmentManager().popBackStack();
+                    FragmentManager fm;
+                    fm = getActivity().getSupportFragmentManager();
+                    f5_1 f = new f5_1();
+                    fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
                 }
-                if (test_map1[6][2]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[10][2]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[6][6]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[10][6]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[6][8]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[10][8]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[2][2]==9||test_map1[3][1]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                if (test_map1[6][7]==17) {
+                    getActivity().getFragmentManager().popBackStack();
+                    FragmentManager fm;
+                    fm = getActivity().getSupportFragmentManager();
+                    f5_3 f = new f5_3();
+                    fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
                 }
 
             }
@@ -297,5 +295,3 @@ public class g501 extends Fragment {
 
 
 }
-
-

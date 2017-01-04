@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,18 +18,17 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 /**
- * Created by Administrator on 2017/1/4.
+ * Created by Administrator on 2017/1/5.
  */
 
-public class g501 extends Fragment {
+public class computer_class extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return new AnimView(getActivity());
+        return new computer_class.AnimView(getActivity());
 
     }
 
@@ -122,37 +120,10 @@ public class g501 extends Fragment {
                 if (test_map1[12][2]==9 || test_map1[11][2]==9) {
                     FragmentManager fm;
                     fm = getActivity().getSupportFragmentManager();
-                    f5_2 f = new f5_2();
+                    f5_1 f = new f5_1();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
                     MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
                     m.start();
-                }
-                if (test_map1[10][4]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("伯特，記住絕對不要回頭").show();
-                }
-                if (test_map1[6][4]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[6][2]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[10][2]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[6][6]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[10][6]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[6][8]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[10][8]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
-                if (test_map1[2][2]==9||test_map1[3][1]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
                 }
 
             }
@@ -297,5 +268,3 @@ public class g501 extends Fragment {
 
 
 }
-
-

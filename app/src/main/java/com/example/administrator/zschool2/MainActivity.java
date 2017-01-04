@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    FragmentManager fm;
+
 
 
     @Override
@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FragmentManager fm;
         fm = getSupportFragmentManager();
         g501 f = new g501();
         fm.beginTransaction().replace(R.id.mainfame,f).addToBackStack(null).commit();
