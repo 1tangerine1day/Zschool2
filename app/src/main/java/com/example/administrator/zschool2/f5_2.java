@@ -91,8 +91,8 @@ public class f5_2 extends Fragment {
 
     private int mapx = -27;// map地图的唯一坐标
     private int mapy = 0;
-    private int titleW;// 每一个方块的宽度和高度
-    private int titleH;
+    private float titleW;// 每一个方块的宽度和高度
+    private float titleH;
     private int n=0;// 每一行的方块数量
     private int n2=0;// 每一行的方块数量
 
@@ -108,7 +108,9 @@ public class f5_2 extends Fragment {
 
     float upX,upY,downX,downY;
 
-    int counter = 0;
+    DisplayMetrics displaymetrics = new DisplayMetrics();
+    int height;
+    int width;
 
 
     @Override
@@ -174,10 +176,18 @@ public class f5_2 extends Fragment {
             map = BitmapFactory.decodeResource(getResources(), R.drawable.room);
             player = BitmapFactory.decodeResource(getResources(), R.drawable.player);
             back = BitmapFactory.decodeResource(getResources(), R.drawable.room);
-            titleW = 96;
-            titleH = 96;
-            n = map.getWidth() / titleW;
-            n2 = player.getWidth() / titleW;
+
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+            height = displaymetrics.heightPixels;
+            width = displaymetrics.widthPixels;
+            float density = displaymetrics.density;
+
+            titleW = (32*density);
+            titleH = (32*density);
+
+
+            n = map.getWidth() / (int)titleW;
+            n2 = player.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */

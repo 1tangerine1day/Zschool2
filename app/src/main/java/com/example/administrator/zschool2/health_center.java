@@ -1,6 +1,5 @@
 package com.example.administrator.zschool2;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,15 +19,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 /**
- * Created by Administrator on 2017/1/5.
+ * Created by huziyuan on 2017/1/5.
  */
 
-public class g502 extends Fragment {
+public class health_center extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return new g502.AnimView(getActivity());
+        return new health_center.AnimView(getActivity());
 
     }
 
@@ -40,15 +39,15 @@ public class g502 extends Fragment {
     private int[][] test_map0 = {
             { 0, 1, 1, 323, 324, 325, 326, 1, 1, 1, 0 },
             { 0, 9, 9, 331, 332, 333, 334, 9, 9, 9, 0 },
-            { 0, 330, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
-            { 0, 37, 121, 37, 121, 37, 121, 37, 121, 37, 0},
-            { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0},
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 121, 37, 122, 37, 121, 37, 121, 37, 0 },
-            { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0  },
+            { 0, 37, 37, 37, 37, 37, 37, 37, 250, 37, 0},
+            { 0, 37, 189, 190, 189, 190, 37, 37, 258, 37, 0},
+            { 0, 37, 197, 198, 197, 198, 37, 37, 266, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 189, 190, 189, 190, 37, 37, 37, 37, 0 },
+            { 0, 37, 197, 198, 197, 198, 37, 37, 250, 37, 0 },
+            { 0, 37, 37, 37, 37, 37, 37, 37, 258, 37, 0  },
+            { 0, 37, 37, 37, 37, 37, 37, 37, 266, 37, 0},
             { 0, 392, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 400, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -122,17 +121,12 @@ public class g502 extends Fragment {
                 if (test_map1[12][2]==9 || test_map1[11][2]==9) {
                     FragmentManager fm;
                     fm = getActivity().getSupportFragmentManager();
-                    f5_2 f = new f5_2();
+                    f5_1 f = new f5_1();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
                     MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
                     m.start();
                 }
-                if (test_map1[10][4]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("伯特，記住絕對不要回頭").show();
-                }
-                if (test_map1[6][2]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
-                }
+
             }
         });
 

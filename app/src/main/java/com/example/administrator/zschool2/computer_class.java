@@ -40,15 +40,15 @@ public class computer_class extends Fragment {
     private int[][] test_map0 = {
             { 0, 1, 1, 323, 324, 325, 326, 1, 1, 1, 0 },
             { 0, 9, 9, 331, 332, 333, 334, 9, 9, 9, 0 },
-            { 0, 330, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
-            { 0, 37, 121, 37, 121, 37, 121, 37, 121, 37, 0},
-            { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0},
+            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
+            { 0, 37, 245, 246, 37, 37, 37, 245, 246, 37, 0},
+            { 0, 37, 253, 254, 37, 37, 37, 253, 254, 37, 0},
+            { 0, 37, 37, 262, 37, 37, 37, 37, 262, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 121, 37, 122, 37, 121, 37, 121, 37, 0 },
-            { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0  },
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 245, 246, 37, 37, 37, 245, 246, 37, 0 },
+            { 0, 37, 253, 254, 37, 37, 37, 253, 254, 37, 0  },
+            { 0, 37, 37, 262, 37, 37, 37, 37, 262, 37, 0},
             { 0, 392, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 400, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -87,10 +87,10 @@ public class computer_class extends Fragment {
     };
 
 
-    private int mapx = -27;// map地图的唯一坐标
+    private int mapx = 0;// map地图的唯一坐标
     private int mapy = 0;
-    private int titleW;// 每一个方块的宽度和高度
-    private int titleH;
+    private float titleW;// 每一个方块的宽度和高度
+    private float titleH;
     private int n=0;// 每一行的方块数量
     private int n2=0;// 每一行的方块数量
 
@@ -107,7 +107,9 @@ public class computer_class extends Fragment {
 
     float upX,upY,downX,downY;
 
-    int counter = 0;
+    DisplayMetrics displaymetrics = new DisplayMetrics();
+    int height;
+    int width;
 
 
     @Override
@@ -147,10 +149,18 @@ public class computer_class extends Fragment {
             map = BitmapFactory.decodeResource(getResources(), R.drawable.room);
             player = BitmapFactory.decodeResource(getResources(), R.drawable.player);
             back = BitmapFactory.decodeResource(getResources(), R.drawable.room);
-            titleW = 96;
-            titleH = 96;
-            n = map.getWidth() / titleW;
-            n2 = player.getWidth() / titleW;
+
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+            height = displaymetrics.heightPixels;
+            width = displaymetrics.widthPixels;
+            float density = displaymetrics.density;
+
+            titleW = (32*density);
+            titleH = (32*density);
+
+
+            n = map.getWidth() / (int)titleW;
+            n2 = player.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */

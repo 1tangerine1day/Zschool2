@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -89,10 +90,10 @@ public class g501 extends Fragment {
     };
 
 
-    private int mapx = -27;// map地图的唯一坐标
+    private int mapx = 0;// map地图的唯一坐标
     private int mapy = 0;
-    private int titleW;// 每一个方块的宽度和高度
-    private int titleH;
+    private float titleW;// 每一个方块的宽度和高度
+    private float titleH;
     private int n=0;// 每一行的方块数量
     private int n2=0;// 每一行的方块数量
 
@@ -107,14 +108,21 @@ public class g501 extends Fragment {
     private int py=2;
 
 
+
     float upX,upY,downX,downY;
 
-    int counter = 0;
+
+    DisplayMetrics displaymetrics = new DisplayMetrics();
+    int height;
+    int width;
+
 
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
         Button doBtn = (Button) getActivity().findViewById(R.id.doBtn);
         doBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -176,10 +184,18 @@ public class g501 extends Fragment {
             map = BitmapFactory.decodeResource(getResources(), R.drawable.room);
             player = BitmapFactory.decodeResource(getResources(), R.drawable.player);
             back = BitmapFactory.decodeResource(getResources(), R.drawable.room);
-            titleW = 96;
-            titleH = 96;
-            n = map.getWidth() / titleW;
-            n2 = player.getWidth() / titleW;
+
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+            height = displaymetrics.heightPixels;
+            width = displaymetrics.widthPixels;
+            float density = displaymetrics.density;
+
+            titleW = (32*density);
+            titleH = (32*density);
+
+
+            n = map.getWidth() / (int)titleW;
+            n2 = player.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */
