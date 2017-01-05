@@ -17,12 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         FragmentManager fm;
         fm = getSupportFragmentManager();
         g501 f = new g501();
         fm.beginTransaction().replace(R.id.mainfame,f).addToBackStack(null).commit();
-
 
 
     }
