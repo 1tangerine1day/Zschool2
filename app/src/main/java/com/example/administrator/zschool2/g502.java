@@ -115,6 +115,12 @@ public class g502 extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+        px = globalVariable.inital_x;
+        py = globalVariable.inital_y;
+        test_map1[px][py] = globalVariable.inital_z;
+
         Button doBtn = (Button) getActivity().findViewById(R.id.doBtn);
         doBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -124,6 +130,12 @@ public class g502 extends Fragment {
                     fm = getActivity().getSupportFragmentManager();
                     f5_2 f = new f5_2();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    globalVariable.inital_x = 2;
+                    globalVariable.inital_y = 8;
+                    globalVariable.inital_z = 1;
+
                     MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
                     m.start();
                 }
@@ -163,8 +175,12 @@ public class g502 extends Fragment {
                 FragmentManager fm;
                 fm = getActivity().getSupportFragmentManager();
                 bag f = new bag();
-                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+                fm.beginTransaction().replace(R.id.mainfame,f).addToBackStack(null).commit();
 
+                GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                globalVariable.inital_x = px;
+                globalVariable.inital_y = py;
+                globalVariable.inital_z = test_map1[px][py];
             }
         });
 

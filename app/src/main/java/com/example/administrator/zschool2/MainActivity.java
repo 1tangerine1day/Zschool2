@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +17,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        FragmentManager fm;
+
         fm = getSupportFragmentManager();
         g501 f = new g501();
-        fm.beginTransaction().replace(R.id.mainfame,f).addToBackStack(null).commit();
+        fm.beginTransaction().replace(R.id.mainfame,f).commit();
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        getFragmentManager();
+        if (fm.getBackStackEntryCount() == 0) {
+            this.finish();
+        } else {
+            fm.popBackStack();
+        }
+    }
+
 
 
 }

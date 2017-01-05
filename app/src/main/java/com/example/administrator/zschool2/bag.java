@@ -127,13 +127,21 @@ public class bag extends Fragment {
             }
         });
         Button toBag = (Button) getActivity().findViewById(R.id.toBag);
+        toBag.setText("離開");
         toBag.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 FragmentManager fm;
                 fm = getActivity().getSupportFragmentManager();
-                f5_2 f = new f5_2();
-                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
+                if (fm.getBackStackEntryCount() == 0) {
+                    getActivity().finish();
+                } else {
+                    fm.popBackStack();
+                }
+                Button toBag = (Button) getActivity().findViewById(R.id.toBag);
+                toBag.setText("背包");
 
             }
         });

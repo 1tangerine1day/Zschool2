@@ -66,7 +66,7 @@ public class health_center extends Fragment {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
     private int[][] test_back0 = {
@@ -101,8 +101,8 @@ public class health_center extends Fragment {
     private int ty=0;
 
 
-    private int px=12;
-    private int py=2;
+    private int px;
+    private int py;
 
 
     float upX,upY,downX,downY;
@@ -115,6 +115,12 @@ public class health_center extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+        px = globalVariable.inital_x;
+        py = globalVariable.inital_y;
+        test_map1[px][py] = globalVariable.inital_z;
+
         Button doBtn = (Button) getActivity().findViewById(R.id.doBtn);
         doBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -124,6 +130,12 @@ public class health_center extends Fragment {
                     fm = getActivity().getSupportFragmentManager();
                     f5_1 f = new f5_1();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    globalVariable.inital_x = 2;
+                    globalVariable.inital_y = 2;
+                    globalVariable.inital_z = 1;
+
                     MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
                     m.start();
                 }
@@ -149,8 +161,12 @@ public class health_center extends Fragment {
                 FragmentManager fm;
                 fm = getActivity().getSupportFragmentManager();
                 bag f = new bag();
-                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+                fm.beginTransaction().replace(R.id.mainfame,f).addToBackStack(null).commit();
 
+                GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                globalVariable.inital_x = px;
+                globalVariable.inital_y = py;
+                globalVariable.inital_z = test_map1[px][py];
             }
         });
 

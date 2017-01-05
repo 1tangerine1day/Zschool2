@@ -7,5 +7,9 @@ import android.app.Application;
  */
 
 public class GlobalVariable extends Application {
-    String[] plase_list = {"g501","g502","computer_class","health_center","library","boss_room","f5_1","f5_2","f5_3"};
+    int inital_x = 4;
+    int inital_y = 3;
+    int inital_z = 1;
+
+
 }

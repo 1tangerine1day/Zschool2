@@ -55,7 +55,7 @@ public class f5_3  extends Fragment {
     private int[][] test_map1 = {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -99,8 +99,8 @@ public class f5_3  extends Fragment {
     private int ty=0;
 
 
-    private int px=2;
-    private int py=2;
+    private int px;
+    private int py;
 
 
     float upX,upY,downX,downY;
@@ -112,6 +112,12 @@ public class f5_3  extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+        px = globalVariable.inital_x;
+        py = globalVariable.inital_y;
+        test_map1[px][py] = globalVariable.inital_z;
+
         Button doBtn = (Button) getActivity().findViewById(R.id.doBtn);
         doBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -122,6 +128,10 @@ public class f5_3  extends Fragment {
                     library f = new library();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
 
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    globalVariable.inital_x = 12;
+                    globalVariable.inital_y = 2;
+                    globalVariable.inital_z = 17;
                 }
                 if (test_map1[2][8]==25) {
                     getActivity().getFragmentManager().popBackStack();
@@ -129,6 +139,11 @@ public class f5_3  extends Fragment {
                     fm = getActivity().getSupportFragmentManager();
                     boss_room f = new boss_room();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    globalVariable.inital_x = 12;
+                    globalVariable.inital_y = 2;
+                    globalVariable.inital_z = 17;
                 }
                 if (test_map1[8][3]==9 || test_map1[9][3]==9 ) {
                     getActivity().getFragmentManager().popBackStack();
@@ -137,6 +152,10 @@ public class f5_3  extends Fragment {
                     f5_2 f = new f5_2();
                     fm.beginTransaction().replace(R.id.mainfame,f).commit();
 
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    globalVariable.inital_x = 6;
+                    globalVariable.inital_y = 7;
+                    globalVariable.inital_z = 9;
                 }
 
 
@@ -149,8 +168,12 @@ public class f5_3  extends Fragment {
                 FragmentManager fm;
                 fm = getActivity().getSupportFragmentManager();
                 bag f = new bag();
-                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+                fm.beginTransaction().replace(R.id.mainfame,f).addToBackStack(null).commit();
 
+                GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                globalVariable.inital_x = px;
+                globalVariable.inital_y = py;
+                globalVariable.inital_z = test_map1[px][py];
             }
         });
 
