@@ -91,7 +91,7 @@ public class boss_room extends Fragment {
     private float titleW;// 每一个方块的宽度和高度
     private float titleH;
     private int n=0;// 每一行的方块数量
-    private int n2=0;// 每一行的方块数量
+
 
 
 
@@ -128,6 +128,17 @@ public class boss_room extends Fragment {
 
             }
         });
+        Button toBag = (Button)getActivity().findViewById(R.id.toBag);
+        toBag.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm;
+                fm = getActivity().getSupportFragmentManager();
+                bag f = new bag();
+                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
+            }
+        });
 
 
     }
@@ -158,7 +169,6 @@ public class boss_room extends Fragment {
 
 
             n = map.getWidth() / (int)titleW;
-            n2 = player.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */

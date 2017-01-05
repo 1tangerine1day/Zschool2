@@ -1,5 +1,6 @@
 package com.example.administrator.zschool2;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -91,7 +92,7 @@ public class health_center extends Fragment {
     private float titleW;// 每一个方块的宽度和高度
     private float titleH;
     private int n=0;// 每一行的方块数量
-    private int n2=0;// 每一行的方块数量
+
 
 
 
@@ -126,6 +127,29 @@ public class health_center extends Fragment {
                     MediaPlayer m = MediaPlayer.create(getActivity(),R.raw.dooropen);
                     m.start();
                 }
+                if (test_map1[5][1]==17||test_map1[5][6]==9) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[8][1]==17||test_map1[8][6]==9) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[4][7]==17) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[9][7]==17) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+
+            }
+        });
+        Button toBag = (Button)getActivity().findViewById(R.id.toBag);
+        toBag.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm;
+                fm = getActivity().getSupportFragmentManager();
+                bag f = new bag();
+                fm.beginTransaction().replace(R.id.mainfame,f).commit();
 
             }
         });
@@ -159,7 +183,7 @@ public class health_center extends Fragment {
 
 
             n = map.getWidth() / (int)titleW;
-            n2 = player.getWidth() / (int)titleW;
+
         }
 
         /* 在surface的大小發生改變時啟動 */

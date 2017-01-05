@@ -46,7 +46,7 @@ public class g502 extends Fragment {
             { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 121, 37, 122, 37, 121, 37, 121, 37, 0 },
+            { 0, 37, 121, 37, 121, 37, 121, 37, 121, 37, 0 },
             { 0, 37, 129, 37, 129, 37, 129, 37, 129, 37, 0  },
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 392, 37, 37, 37, 37, 37, 37, 37, 37, 0},
@@ -92,7 +92,7 @@ public class g502 extends Fragment {
     private float titleW;// 每一个方块的宽度和高度
     private float titleH;
     private int n=0;// 每一行的方块数量
-    private int n2=0;// 每一行的方块数量
+
 
 
 
@@ -128,11 +128,43 @@ public class g502 extends Fragment {
                     m.start();
                 }
                 if (test_map1[10][4]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("伯特，記住絕對不要回頭").show();
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[6][4]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
                 }
                 if (test_map1[6][2]==25) {
                     new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
                 }
+                if (test_map1[10][2]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[6][6]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[10][6]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[6][8]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[10][8]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+                if (test_map1[2][2]==9||test_map1[3][1]==25) {
+                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                }
+            }
+        });
+        Button toBag = (Button)getActivity().findViewById(R.id.toBag);
+        toBag.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm;
+                fm = getActivity().getSupportFragmentManager();
+                bag f = new bag();
+                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
             }
         });
 
@@ -165,7 +197,6 @@ public class g502 extends Fragment {
 
 
             n = map.getWidth() / (int)titleW;
-            n2 = player.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */

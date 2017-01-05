@@ -10,20 +10,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.administrator.zschool2.MainActivity">
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainfame"
-        android:layout_above="@+id/doBtn">
+        android:weightSum="1">
 
-    </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="410dp"
+            android:id="@+id/mainfame"
+            android:layout_above="@+id/doBtn"
+            android:layout_weight="0.76">
 
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/doBtn"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:text="Button"
+                android:layout_width="183dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/toBag" />
+
+            <Button
+                android:text="Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/doBtn"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

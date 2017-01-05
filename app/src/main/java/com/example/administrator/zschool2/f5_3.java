@@ -142,6 +142,17 @@ public class f5_3  extends Fragment {
 
             }
         });
+        Button toBag = (Button)getActivity().findViewById(R.id.toBag);
+        toBag.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm;
+                fm = getActivity().getSupportFragmentManager();
+                bag f = new bag();
+                fm.beginTransaction().replace(R.id.mainfame,f).commit();
+
+            }
+        });
 
 
     }
