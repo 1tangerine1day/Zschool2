@@ -1,5 +1,6 @@
 package com.example.administrator.zschool2;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,56 +35,56 @@ public class bag extends Fragment {
     private DisplayMetrics metrics = new DisplayMetrics();
     private Paint paint;
     private Canvas canvas;
-    private Bitmap map,player,back;
+    private Bitmap map,picker,back;
     private SurfaceHolder sfh;
     private int[][] test_map0 = {
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 181, 0, 191, 0, 188, 0, 187, 0, 0 },
-            { 0, 0, 181, 0, 191, 0, 188, 0, 187, 0, 0},
-            { 0, 0, 181, 0, 191, 0, 188, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 191, 0, 187, 0, 50, 0, 169, 0, 0, 0},
+            { 0, 0, 181, 0, 188, 0, 99, 0, 125, 0, 0, 0},
+            { 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
     private int[][] test_map1 = {
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 317, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
     private int[][] test_back0 = {
 
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
-            { 302, 302, 302, 302, 302, 302, 302, 302, 302, 302, 302},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
     };
 
@@ -93,16 +94,14 @@ public class bag extends Fragment {
     private float titleW;// 每一个方块的宽度和高度
     private float titleH;
     private int n=0;// 每一行的方块数量
+    private int n2=0;// 每一行的方块数量
 
 
+    private int tx=2;
+    private int ty=2;
 
 
-
-    private int tx=0;
-    private int ty=0;
-
-
-    private int px=1;
+    private int px=2;
     private int py=2;
 
 
@@ -116,16 +115,38 @@ public class bag extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+        if(globalVariable.old_key == 1){
+            test_map0[tx][ty] = 181;
+            ty = ty+2;
+        }
+
+
         Button doBtn = (Button) getActivity().findViewById(R.id.doBtn);
         doBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (test_map1[12][2]==9 || test_map1[11][2]==9) {
-
+                GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                if (test_map0[px][py]==181) {
+                    new AlertDialog.Builder(getActivity()).setMessage("裝備了鑰匙").show();
+                    globalVariable.with_what = 1;
                 }
-
+                if (test_map0[px][py]==169) {
+                    new AlertDialog.Builder(getActivity()).setMessage("裝備了弓箭").show();
+                    globalVariable.with_what = 2;
+                }
+                if (test_map0[px][py]==24) {
+                    new AlertDialog.Builder(getActivity()).setMessage("裝備了 火焰").show();
+                    globalVariable.with_what = 3;
+                }
             }
         });
+
+
+
+
+
         Button toBag = (Button) getActivity().findViewById(R.id.toBag);
         toBag.setText("離開");
         toBag.setOnClickListener(new Button.OnClickListener(){
@@ -162,8 +183,8 @@ public class bag extends Fragment {
             paint.setAntiAlias(true);
             // 图片资源初始化
             map = BitmapFactory.decodeResource(getResources(), R.drawable.bag);
-            player = BitmapFactory.decodeResource(getResources(), R.drawable.background);
-            back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+            picker = BitmapFactory.decodeResource(getResources(), R.drawable.picker);
+            back = BitmapFactory.decodeResource(getResources(), R.drawable.ui);
 
             getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
             height = displaymetrics.heightPixels;
@@ -175,6 +196,7 @@ public class bag extends Fragment {
 
 
             n = map.getWidth() / (int)titleW;
+            n2 = back.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */
@@ -207,8 +229,8 @@ public class bag extends Fragment {
                     //绘制一个矩形可视区域
                     canvas.clipRect(j*titleW+mapx, i*titleH+mapy, (j+1)*titleW+mapx, (i+1)*titleH+mapy);
                     //在每个矩形区域内，将原地图的指定的模块绘制在矩形区域内
-                    canvas.drawBitmap(back, j*titleW+mapx-((test_back0[i][j]-1)%n)*titleW, i*titleH+mapy-((test_back0[i][j]-1)/n)*titleH, paint);
-                    canvas.drawBitmap(player, j*titleW+mapx-((test_map1[i][j]-1)%n)*titleW, i*titleH+mapy-((test_map1[i][j]-1)/n)*titleH, paint);
+                    canvas.drawBitmap(back, j*titleW+mapx-((test_back0[i][j]-1)%n2)*titleW, i*titleH+mapy-((test_back0[i][j]-1)/n2)*titleH, paint);
+                    canvas.drawBitmap(picker, j*titleW+mapx-((test_map1[i][j]-1)%n)*titleW, i*titleH+mapy-((test_map1[i][j]-1)/n)*titleH, paint);
                     canvas.drawBitmap(map, j*titleW+mapx-((test_map0[i][j]-1)%n)*titleW, i*titleH+mapy-((test_map0[i][j]-1)/n)*titleH, paint);
                     canvas.restore();
                 }
@@ -257,7 +279,7 @@ public class bag extends Fragment {
                             tx = px;
                             ty = py;
                             px = px-1;
-                            test_map1[px][py] = 317;
+                            test_map1[px][py] = 1;
                             go();
                         }
 
@@ -268,7 +290,7 @@ public class bag extends Fragment {
                             tx = px;
                             ty = py;
                             px = px+1;
-                            test_map1[px][py] = 317;
+                            test_map1[px][py] = 1;
                             go();
                         }
 
@@ -278,7 +300,7 @@ public class bag extends Fragment {
                             tx = px;
                             ty = py;
                             py = py-2;
-                            test_map1[px][py] = 317;
+                            test_map1[px][py] = 1;
                             go();
                         }
 
@@ -288,7 +310,7 @@ public class bag extends Fragment {
                             tx = px;
                             ty = py;
                             py = py+2;
-                            test_map1[px][py] = 317;
+                            test_map1[px][py] = 1;
                             go();
                         }
                     }

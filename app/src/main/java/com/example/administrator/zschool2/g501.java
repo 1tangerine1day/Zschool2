@@ -159,7 +159,14 @@ public class g501 extends Fragment {
                     new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
                 }
                 if (test_map1[6][6]==25) {
-                    new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    if(globalVariable.old_key != 1) {
+                        globalVariable.old_key = 1;
+                        new AlertDialog.Builder(getActivity()).setMessage("獲得鑰匙").show();
+                    }
+                    else {
+                        new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();
+                    }
                 }
                 if (test_map1[10][6]==25) {
                     new AlertDialog.Builder(getActivity()).setMessage("這是空的").show();

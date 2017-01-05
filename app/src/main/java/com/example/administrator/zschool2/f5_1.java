@@ -1,5 +1,6 @@
 package com.example.administrator.zschool2;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,7 +35,7 @@ public class f5_1 extends Fragment {
     private DisplayMetrics metrics = new DisplayMetrics();
     private Paint paint;
     private Canvas canvas;
-    private Bitmap map,player,back;
+    private Bitmap map,player,back,mon,anm;
     private SurfaceHolder sfh;
     private int[][] test_map0 = {
             { 0, 341, 342, 343, 1, 1, 1, 341, 342, 343, 0 },
@@ -47,7 +48,7 @@ public class f5_1 extends Fragment {
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
-            { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
+            { 0, 37, 37, 0, 37, 37, 37, 37, 37, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0},
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -84,13 +85,46 @@ public class f5_1 extends Fragment {
             { 0, 37, 37, 37, 37, 37, 37, 37, 37, 37, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     };
+    private int[][] test_mon0 = {
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    };
+    private int[][] test_anm0 = {
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    };
 
 
-    private int mapx = -27;// map地图的唯一坐标
+    private int mapx = 0;// map地图的唯一坐标
     private int mapy = 0;
     private float titleW;// 每一个方块的宽度和高度
     private float titleH;
     private int n=0;// 每一行的方块数量
+    private int n2=0;// 每一行的方块数量
 
 
 
@@ -156,6 +190,15 @@ public class f5_1 extends Fragment {
                     globalVariable.inital_y = 3;
                     globalVariable.inital_z = 17;
                 }
+                if (test_map1[11][3]==25) {
+                    GlobalVariable globalVariable = (GlobalVariable)getActivity().getApplicationContext();
+                    if(globalVariable.with_what==3){
+                        //test_mon0[10][3]=0;
+                        //test_map0[10][3]=37;
+                        test_anm0[10][3]=3;
+                        new AlertDialog.Builder(getActivity()).setMessage("哭簍怪開始燃燒了").show();
+                    }
+                }
 
             }
         });
@@ -193,6 +236,8 @@ public class f5_1 extends Fragment {
             map = BitmapFactory.decodeResource(getResources(), R.drawable.room);
             player = BitmapFactory.decodeResource(getResources(), R.drawable.player);
             back = BitmapFactory.decodeResource(getResources(), R.drawable.room);
+            mon = BitmapFactory.decodeResource(getResources(), R.drawable.monster);
+            anm = BitmapFactory.decodeResource(getResources(), R.drawable.fire);
 
             getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
             height = displaymetrics.heightPixels;
@@ -204,7 +249,7 @@ public class f5_1 extends Fragment {
 
 
             n = map.getWidth() / (int)titleW;
-
+            n2 = anm.getWidth() / (int)titleW;
         }
 
         /* 在surface的大小發生改變時啟動 */
@@ -240,6 +285,8 @@ public class f5_1 extends Fragment {
                     canvas.drawBitmap(back, j*titleW+mapx-((test_back0[i][j]-1)%n)*titleW, i*titleH+mapy-((test_back0[i][j]-1)/n)*titleH, paint);
                     canvas.drawBitmap(map, j*titleW+mapx-((test_map0[i][j]-1)%n)*titleW, i*titleH+mapy-((test_map0[i][j]-1)/n)*titleH, paint);
                     canvas.drawBitmap(player, j*titleW+mapx-((test_map1[i][j]-1)%n)*titleW, i*titleH+mapy-((test_map1[i][j]-1)/n)*titleH, paint);
+                    canvas.drawBitmap(mon, j*titleW+mapx-((test_mon0[i][j]-1)%n)*titleW, i*titleH+mapy-((test_mon0[i][j]-1)/n)*titleH, paint);
+                    canvas.drawBitmap(anm, j*titleW+mapx-((test_anm0[i][j]-1)%n2)*titleW, i*titleH+mapy-((test_anm0[i][j]-1)/n2)*titleH, paint);
                     canvas.restore();
                 }
             }

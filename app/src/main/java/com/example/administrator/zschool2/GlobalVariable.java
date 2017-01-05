@@ -11,5 +11,9 @@ public class GlobalVariable extends Application {
     int inital_y = 3;
     int inital_z = 1;
 
+    int old_key = 0;
+
+
+    int with_what = 0;
 
 }
